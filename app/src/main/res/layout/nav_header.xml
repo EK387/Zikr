@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/drawerphoto"
+    android:gravity="bottom"
+    android:padding="10dp"
+     android:layout_height="176dp">
+<!--    android:theme="@style/ThemeOverlay.AppCompat.Dark"-->
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/logo"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:layout_marginStart="5dp"
+        android:textColor="@color/colorOFF"
+        android:textSize="13dp"
+
+
+        android:text="Vjerodostojni jutarnji i večernji zikrovi">
+
+    </TextView>
+
+
+
+</LinearLayout>

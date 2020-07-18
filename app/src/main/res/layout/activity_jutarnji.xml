@@ -1,0 +1,2400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Jutarnji">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+<com.google.android.material.appbar.CollapsingToolbarLayout
+    android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+    app:contentScrim="?attr/colorPrimary"
+    app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
+
+    <ImageView
+        android:id="@+id/ivImagec"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_collapseMode="parallax"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/sunrise" />
+
+
+
+
+   <TextView
+       android:id="@+id/txtShow"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:fontFamily="@font/clear_light"
+       android:padding="10dp"
+       android:background="@color/brojac"
+       android:layout_marginTop="20dp"
+       android:text="Najbolje vrijeme za učenja jutarnjeg zikra je od pojave zore pa do izlaska sunca."
+       android:textColor="@color/pozadina"
+       android:textSize="15sp" />
+
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="bottom|end"
+                app:layout_scrollFlags="scroll"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/BTNarapski"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="8dp"
+                        android:fitsSystemWindows="true"
+                        android:text="AR "
+                        android:textColor="@color/fab2"
+
+                        android:theme="@style/mySwitch"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/BTNtrans"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </androidx.appcompat.widget.SwitchCompat>
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/BTNtrans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/fab2"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="TR "
+                        android:theme="@style/mySwitch"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/BTNbos"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                    </androidx.appcompat.widget.SwitchCompat>
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/BTNbos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="BS "
+                        android:theme="@style/mySwitch"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textColor="@color/fab2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </androidx.appcompat.widget.SwitchCompat>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+</com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/pozadina">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-2dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout1"
+                     android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/txtAr1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/arapski"
+                    android:text="أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ, وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْم,ِ وَخَيرَ مَا بَعْدَهُ, وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ, وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/droid_regular"
+                    android:padding="8dp"/>
+
+
+                <TextView
+                    android:id="@+id/txtTr1"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/txtAr1"
+                    android:fontFamily="@font/clear_regular"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/transkripcija"
+                    android:textSize="16sp"
+                    android:text="ASBAHNĀ VE ASBEHAL-MULKU LILLAH. VEL-HAMDULILLĀH. LĀ ILĀHE ILLALLĀHU VAHDEHŪ LĀ ŠERÎKE LEHŪ LEHUL-MULKU VE LEHUL-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ’IN KADÎR. RABBI ES’ELUKE HAJRE MĀ FÎ HĀZEL-JEVMI VE HAJRE MĀ BA‘DEH. VE EŪ‘ZU BIKE MIN ŠERRI HĀZEL-JEVMI VE ŠERRI MA BA‘DEH. RABBI EŪ‘ZU BIKE MINEL-KESELI VE SŪ’IL-KIBER. RABBI EŪ‘ZU BIKE MIN ‘AZĀBIN FIN-NARI VE ‘AZĀBIN FIL-KABR. "
+                    android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs1"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr1"
+                         android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Jutro dočekasmo i jutro dočeka svekolika vlast Allahova. Hvala Allahu, nema istinskog božanstva osim Njega, Jedinog, Koji nema saučesnika, Njemu pripada sva vlast i svaka zahvalnost i On sve može. Gospodaru, molim Ti se za dobro ovog dana i za dobro noći koja slijedi, a Tebi se utječem od njegovog zla i od zla noći koja slijedi! Gospodaru, Tebi se utječem od lijenosti! Gospodaru, Tebi se utječem od kazne u Vatri i kazne u kaburu! "
+                        android:padding="8dp"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/constraint1"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="false"
+                        android:layout_below="@+id/txtBs1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="4dp"
+                            android:text="Muslim"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_brojac1"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio1"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <Button
+                            android:id="@+id/btn_audio1"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:clickable="true"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </Button>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="clickLayout2"
+                    android:id="@+id/layout2"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+                    <TextView
+                        android:id="@+id/txtAr15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:textSize="17sp"
+                        android:text="أَصْبَحْنا عَلَى فِطْرَةِ الْإِسْلاَمِ، وَعَلَى كَلِمَةِ الْإِخْلاَصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ صلى الله عليه وسلم، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفاً مُسْلِماً, وَمَا كَانَ مِنَ الْمُشرِكِينَ"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+
+                    <TextView
+                        android:id="@+id/txtTr15"
+                        android:layout_width="match_parent"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtAr15"
+
+                        android:textColor="@color/transkripcija"
+                        android:text="ASBAHNA 'ALA FITRETI-L-ISLAM, VE 'ALA KELIMETI-L-IHLAS, VE ’ALA DINI NEBIJJINA MUHAMMEDIN, SALLĀLLAHU ‘ALEJHI VE SELLEM, VE 'ALA MILLETI EBINA IBRAHIME HANIFEN MUSLIMA, VE MA KANE MINE-L-MUŠRIKIN."
+                        android:textSize="16sp"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs15"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr15"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Jutro dočekasmo u čistoti islama, riječima tevhida, u vjeri našeg vjerovjesnika Muhammeda, sallallahu alejhi ve sellem, u vjeri našeg vjerovjesnika Ibrahima, koji je bio pravovjerni musliman, a nije bio mnogobožac."
+                        android:padding="8dp"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs15"
+                        android:orientation="horizontal">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Ahmed"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio2"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <Button
+                            android:id="@+id/btn_brojac2"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/brojac"
+                            android:textSize="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio2"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </Button>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                   android:id="@+id/layout3"
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout3"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="اللّهُـمَّ عالِـمَ الغَـيْبِ وَالشّـهادَةِ فاطِـرَ السّماواتِ وَالأرْضِ رَبَّ كـلِّ شَـيءٍ وَمَليـكَه ، أَشْهَـدُ أَنْ لا إِلـهَ إِلاّ أَنْت ، أَعـوذُ بِكَ مِن شَـرِّ نَفْسـي وَمِن شَـرِّ الشَّيْـطانِ وَشِـرْكِه ، وَأَنْ أَقْتَـرِفَ عَلـى نَفْسـي سوءاً أَوْ أَجُـرَّهُ إِلـى مُسْـلِم
+"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr2"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr2"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:text="ALLĀHUMME ‘ĀLIMEL-GAJBI VEŠ-ŠEHĀDETI FĀTIRES-SEMĀVATI VEL-ERDI RABBE KULLI ŠEJ’IN VE MELIKEH. EŠHEDU EN LĀ ILĀHE ILLA ENTE EŪ‘ZU BIKE MIN ŠERRI NEFSÎ VE ŠERRIŠ-ŠEJTĀNI VE ŠIRKIH. VE EN AKTERIFE  ‘ALĀ NEFSÎ SŪ’EN EV EDŽURREHŪ ILĀ MUSLIM. "
+                        android:textSize="16sp"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs2"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr2"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Allahu, Poznavaoče skrivenog i pojavnog (svijeta), Sazdavatelju nebesa i Zemlje, Gospodaru svega i njegov Posjedovatelju: svjedočim da nema boga osim Tebe, Tebi se sklanjam pred zlom moje duše, i pred zlom šejtana i njegovog širka, te da me sačuvaš od činjenja zla prema sebi ili bilo kom muslimanu."
+                        android:padding="8dp"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/constraint3"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="false"
+                        android:layout_below="@+id/txtBs2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="4dp"
+                            android:text="Tirmizi"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_brojac3"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/okvir"
+                            android:text="1"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio3"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <Button
+                            android:id="@+id/btn_audio3"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:clickable="true"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </Button>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout4"
+                    android:clickable="true"
+                    android:id="@+id/layout4"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="للَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ, فِي الدُّنْيَا وَالآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ, فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَاتِي، وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَينِ يَدَيَّ وَمِنْ خَلْفِي، وَعَنْ يَمِينِي وَعَنْ شِمَالِي، وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr3"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr3"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:text="ALLĀHUMME INNĪ ES ELUKE-L-‘AFVE VE-L-‘ĀFIJEH, FI-D-DUNJĀ VE-L-ĀHIREH, ALLĀHUMME INNĪ ES‘ELUKE-L-‘AFVE VE-L-‘ĀFIJEH, FĪ DĪNĪ VE DUNJĀJE VE EHLĪ VE MĀLĪ, ALLĀHUMME- STUR ‘AVRĀTĪ, VE ĀMIN REV‘ĀTĪ, ALLĀHUMME-HFAZNĪ MIN BEJNI JEDEJJE VE MIN HALFĪ, VE ‘AN JEMĪNĪ VE ‘AN ŠIMĀLĪ, VE MINFEVKĪ, VE E‘ŪZU BI‘AZAMETIKE EN UGTĀLE MIN TAHTĪ. "
+                        android:textSize="16sp"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs3"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr3"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Allahu, molim oprost i zaštitu Tvoju na dunjaluku i na ahiretu. Allahu, molim oprost i zaštitu Tvoju u porodici i imovini mojoj. Allahu, pokrij moja sramna djela, a umiri moju bojazan. Allahu, sačuvaj me s moje prednje strane, te od svega što me može zadesiti s leđa, s desne ili lijeve strane i odozgo. Prizivam Tvoju Veličinu da ne budem ščepan odozdo. "
+
+                        android:padding="8dp"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/constraint4"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="false"
+                        android:layout_below="@+id/txtBs3"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="4dp"
+                            android:text="Muteffekun alejhi"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_brojac4"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="1dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio4"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <Button
+                            android:id="@+id/btn_audio4"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:clickable="true"
+                            android:foreground="?attr/selectableItemBackgroundBorderless"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="4dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </Button>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout5"
+                    android:clickable="true"
+                    android:id="@+id/layout5"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا ، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ, وَإِلَيْكَ النُّشُورُ"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr4"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr4"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="ALLĀHUMME BIKE ASBAHNĀ, VE BIKE EMSEJNĀ, VE BIKE NAHJĀ VE BIKE NEMŪTU VE ILEJKEN-NUŠŪR."
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs4"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr4"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Gospodaru Tebi osvićemo i Tebi omrknjavamo, tebi živimo i tebi umiremo i (prema Tebi idemo), pred tobom ćemo se iskupiti."
+                        android:padding="8dp"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs4"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Tirmizi"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio5"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac5"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio5"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout6"
+                    android:clickable="true"
+                    android:id="@+id/layout6"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغيثُ, أَصْلِحْ لِي شَأْنِيَ كُلَّهُ, وَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr12"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr12"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="JA HAJJU JA KAJJŪM. BI RAHMETIKE ESTEGÎS. ASLIH LÎ ŠE’NÎ KULLEH. VE LĀ TEKILNÎ ILĀ NEFSÎ TARFETE ‘AJN. "
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs12"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr12"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="O Ti, Živi, Postojani Održavatelju, molim Te za Tvoju obilatu milost – popravi moje stanje u svakom pogledu i ne prepusti me meni samome ni jednoga trena."
+                        android:padding="8dp"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs12"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Hakim"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio6"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac6"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:textColor="@color/brojac"
+                            android:text="1"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio6"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout7"
+                    android:clickable="true"
+                    android:id="@+id/layout7"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لاَ يَغْفِرُ الذُّنوبَ إِلاَّ أَنْتَ"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr5"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr5"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="ALLĀHUMME ENTE RABBĪ LĀ ILĀHE ILLĀ ENTE HALEKTENĪ VE ENE ‘ABDUKE (žene će reći: VE ENE EMETUKE) VE ENE ‘ALĀ ‘AHDIKE VE VA‘DIKE MESTETA‘TU, E‘ŪZU BIKE MIN ŠERRI MĀ SANA‘TU EBŪ-U LEKE BI NI‘METIKE ‘ALEJJE, VE EBŪ-U BIZENBĪ FAGFIRLĪ FE INNEHU LĀ JAGFIRU-Z-ZUNŪBE ILLĀ ENTE."
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs5"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr5"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Allahu moj, Ti si moj Gospodar, nema boga osim Tebe, stvorio Si me, ja sam Ti rob, ja sam na ugovoru i obećanju datom Tebi koliko sam u mogućnosti. Utječem Ti se od zla koga sam učinio. Priznajem Tvoje blagodati meni date, a priznajem svoje grijehe, oprosti mi, jer sem Tebe niko grijehe ne može oprostiti."
+                        android:padding="8dp"/>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs5"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Buhari"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio7"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac7"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio7"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout8"
+                    android:clickable="true"
+                    android:id="@+id/layout8"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="حَسْبِيَ اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ عَلَيهِ تَوَكَّلتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr6"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr6"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="HASBIJALLĀHU LĀ ILĀHE ILLĀ HUVE ‘ALEJHI TEVEKKELTU VE HUVE RABBU-L-‘ARŠIL ‘AZĪM. "
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs6"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr6"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Dovoljan mi je Allah, nema Boga osim Njega, na Njega se oslanjam. On je Gospodar Arša veličanstvenog."
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs6"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Ibni Sunijj, hasen"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio8"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac8"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="7"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio8"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout9"
+                    android:clickable="true"
+                    android:id="@+id/layout9"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلاَ فِي السّمَاءِ, وَهُوَ السَّمِيعُ الْعَلِيمُِ"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr7"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr7"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="BISMILLĀHILLEZI LA JEDURRU MEA‘SMIHÎ ŠEJ’UN FIL-ERDI VE LĀ FIS-SEMĀ’I VE HUVES-SEMÎ‘UL-ALÎM. "
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs7"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr7"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="U ime Onoga uz čije ime neće nauditi ništa na nebesima niti na zemlji, a On sve čuje i sve zna."
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs7"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Ebu Davud, Tirmizi, Ibn Madždže"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio9"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac9"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio9"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout11"
+                    android:clickable="true"
+                    android:id="@+id/layout11"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                  android:text="رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ صلى الله عليه وسلم نَبِيّاً"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr9"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr9"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="REDĪTU BILLĀHI RABBĀ, VE BI-L-ISLĀMI DĪNĀ, VE BI MUHAMMEDIN SALLĀLLAHU ‘ALEJHI VE SELLEME NEBIJJĀ. "
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs9"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr9"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Zadovoljan sam Allahom Gospodarom, Islamom vjerom, i Muhamedom s.a.v.s Vjerovjesnikom."
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs9"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Tirmizi"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio11"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac11"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio11"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout12"
+                    android:clickable="true"
+                    android:id="@+id/layout12"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="سُبْحَانَ اللَّهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr10"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr10"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="SUBHĀNALLĀHI VE BI HAMDIHÎ ‘ADEDE HALKIHÎ VE RIDĀ NEFSIHÎ VE ZINETE ‘ARŠIHÎ VE MIDĀDE KELIMATIH. "
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs10"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr10"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:text="Neka je hvaljen i slavljen Allah u razmjerama brojnosti Njegovih stvorenja, u razmjeri Njegovog zadovoljstva, težine Njegovog prijestolja i osebujnosti Njegovih riječi! "
+                        android:textSize="17sp"
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs10"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Muslim"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio12"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac12"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio12"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout13"
+                    android:clickable="true"
+                    android:id="@+id/layout13"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="سُبْحَانَ اللَّهِ وَبِحَمْدِهِ"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr11"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr11"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="SUBHANALLĀHI VE BI HAMDIH. "
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs11"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr11"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Kaže Poslanik s.a.v.s: “Ko kaže u toku jednog dana sto puta: ‘Subhanallahi ve bi hamdihi’ (Slavljen je Allah i Njemu pripada sva hvala), oprošteni su mu grijesi, pa makar ih bilo kao morske pjene."
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs11"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Muteffekun alejhi"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio13"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac13"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text=" 100 "
+                            android:textColor="@color/brojac"
+                            android:textSize="13dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio13"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout18"
+                    android:clickable="true"
+                    android:id="@+id/layout18"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:textSize="17sp"
+                        android:text="لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr18"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr18"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="LĀ ILĀHE ILLALLĀHU VAHDEHŪ LĀ ŠERÎKE LEHŪ LEHUL-MULKU VE LEHUL-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ’IN KADÎR."
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs18"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr18"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Nema istinskog božanstva osim Allaha, Jedinog, Koji nema saučesnika, Njemu pripada sva vlast i svaka zahvalnost i On sve može."
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs18"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="Muslim"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio18"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac18"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="10"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio18"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout19"
+                    android:clickable="true"
+                    android:id="@+id/layout19"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txt_salavat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/fab1"
+                        android:padding="6dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="Rekao je Resulullah, sallallahu alejhi ve sellem: ”Ko donese na mene deset salavata ujutro i deset salavata navečer, sustiće ga moj šefa’at na Sudnjem Danu.”"
+                        android:textColor="@color/fab2"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/txt_salavat1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_below="@+id/txt_salavat"
+                        android:background="@color/fab1"
+                        android:padding="6dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="Bilježi Taberani od Ebu Derdāa; neki hadiski stručnjaci hadis ocjenjuju dobrim, tj. hasen li gajrihi kada se pojača drugim rivajetima."
+                        android:textColor="@color/fab2"
+                        android:textSize="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
+
+                    </TextView>
+                    <TextView
+                        android:id="@+id/txtAr19"
+                        android:layout_width="match_parent"
+                        android:layout_below="@+id/txt_salavat1"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:textSize="17sp"
+                        android:text="اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ، وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيتَ عَلَى إِبْرَاهِيمَ، وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌٌ"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr19"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr19"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="ALLAHUMME SALLI ’ALA MUHAMMEDIN VE ’ALA ALI MUHAMMEDIN , KEMA SALLEJTE ‘ALA IBRAHIME VE ’ALA ALI IBRAHIME, INNEKE HAMIDUN MEDŽID. ALLAHUMME BARIK ’ALA MUHAMMEDIN VE ’ALA ALI MUHAMMEDIN KEMA BAREKTE ’ALA IBRAHIME VE ’ALA ALI IBRAHIME INNEKE HAMIDUN MEDŽID. "
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs19"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr19"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Allahu moj, smiluj se Muhammedu, a.s., i njegovom potomstvu, kao što si se smilovao Ibrahimu, a.s., i njegovom potomstvu. Zaista si Ti Hvaljeni i Vječni. Allahu moj, blagoslovi Muhammeda, a.s., i njegovo potomstvo, kao što si blagoslovio Ibrahima, a.s., i njegovo potomstvo. Doista si Ti Hvaljen i Vječan."
+                        android:padding="8dp"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/constraint_salavat"
+
+                        android:layout_below="@+id/txtBs19"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="SALAVAT 1"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio19"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac19"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="10"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio19"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/txtAr19_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:layout_below="@+id/constraint_salavat"
+                        android:textSize="17sp"
+                        android:text="للَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى أَزْوَاجِهِ وَذُرِّيَّتِهِ، كَمَا صَلَّيْتَ عَلَى آلِ إِبْرَاهِيمَ. وَبَارِكْ عَلَى مُحَمَّدٍ وَعَلَى أَزْواجِهِ وَذُرِّيَّتِهِ، كَمَا بَارَكْتَ عَلَى آلِ إِبْرَاهِيمَ. إِنَّكَ حَمِيدٌ مَجِيدٌ"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr19_1"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr19_1"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="ALLAHUMME SALLI ’ALA MUHAMMEDIN VE ’ALA EZVADŽIHI VE ZURRIJJETIHI KEMA SALLEJTE ’ALA ALI IBRAHIME. VE BARIK ’ALA MUHAMMEDIN VE ’ALA EZVADŽIHI VE ZURRIJJETIHI KEMA BAREKTE ’ALA ALI IBRAHIME. INNEKE HAMIDUN MEDŽID. "
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs19_1"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr19_1"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:text="Allahu moj, smiluj se Muhammedu, a.s., njegovim ženama i njegovu potomstvu, kao što si se smilovao porodici Ibrahima, a.s. Allahu moj, blagoslovi Muhammeda, a.s., njegove žene i njegovo potomstvo, kao što si blagoslovio Ibrahima, a.s., i njegovu porodicu. Doista, Ti si Hvaljeni i Vječni."
+                        android:textSize="17sp"
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtBs19_1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="SALAVAT 2"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio19_1"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac19_1"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text="10"
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio19_1"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout14"
+                    android:clickable="true"
+                    android:id="@+id/layout14"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txtAr13_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/fab2"
+                        android:text=" بسم الله الرحمن الرحيم "
+                        android:textSize="12sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+                    <TextView
+                        android:id="@+id/txtAr13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtAr13_1"
+                        android:textColor="@color/arapski"
+                        android:text="اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ, لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ, لَّهُ مَا فِي السَّمَوَاتِ وَمَا فِي الأَرْض,ِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِه,ِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ, وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء, وَسِعَ كُرْسِيُّهُ السَّمَوَاتِ وَالْأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr13"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr13"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="ALLAHU LA ILAHE ILLA HUVEL- HAJJUL-KAJJUM, LA TE'HUZUHU SINETUN VE LA NEVM, LEHU MA FISSEMAVATI VE MA FIL-ERD, MEN ZALLEZI JEŠFE'U INDEHU ILLA BI IZNIH, JA'LEMU MA BEJNE EJDIHIM VE MA HALFEHUM, VE LA JUHITUNE BI ŠEJ'IN MIN ILMIHI ILLA BIMA ŠA'E, VESI'A KURSIJJUHUS-SEMAVATI VEL-ERDA VE LA JE'UDUHU HIFZUHUMA VE HUVEL-ALIJJUL-AZIM. "
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs13"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr13"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Allah je, nema boga osim Njega, Živi i Vječni! Održavatelj! Ne obuzima Ga ni drijemež ni san! Njegovo je ono što je na nebesima i na Zemlji! Ko se može pred Njim zauzimati bez Njegovog dopuštenja?! On zna šta je bilo prije i šta će biti poslije njih i oni ne mogu obuhvatiti od Njegovoga znanja osim koliko On želi! Njegov Prijesto obuhvata i nebesa i Zemlju i Njemu nije teško održavati ih! On je Svevišnji i Veličanstveni!"
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs13"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="El-Bekare, 255(Ajetul - Kursija)"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio14"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac14"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text=" 1 "
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio14"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout15"
+                    android:clickable="true"
+                    android:id="@+id/layout15"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txtAr14_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/fab2"
+                        android:text="بسم الله الرحمن الرحيم"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+                    <TextView
+                        android:id="@+id/txtAr14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtAr14_1"
+                        android:textColor="@color/arapski"
+                        android:textSize="17sp"
+                        android:text="قُلْ هُوَ اللَّهُ أَحَدٌ, اللَّهُ الصَّمَدُ, لَمْ يَلِدْ وَلَمْ يُولَدْ, وَلَمْ يَكُن لَّهُ كُفُواً أَحَدٌ"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr14"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr14"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:text="KUL HUVALLAHU EHAD, ALLAHU-S-SAMED, LEM JELID VE LEM JULED, VE LEM JEKUL-LEHU KUFUVEN EHAD."
+                        android:textSize="16sp"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs14"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr14"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Reci:''On je Allah - Jedan! Allah je utočište svakom! Nije rodio i rođen nije, i niko Mu ravan nije! ''"
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs14"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="El-Ihlas"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio15"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac15"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text=" 3 "
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio15"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout16"
+                    android:clickable="true"
+                    android:id="@+id/layout16"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txtAr16_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/fab2"
+                        android:text="بسم الله الرحمن الرحيم"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+                    <TextView
+                        android:id="@+id/txtAr16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtAr16_1"
+                        android:textColor="@color/arapski"
+                        android:textSize="17sp"
+                        android:text="قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ, مِن شَرِّ مَا خَلَقَ, وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ, وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ, وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr16"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr16"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:text="KUL E`UZU BI RABBI-L-FELEK, MIN ŠERRI MA HALEK, VE MIN ŠERRI GASIKIN IZA VEKAB, VE MIN ŠERRI-N-NEFFASATI FI-L-UKAD, VE MIN ŠERRI HASIDIN IZA HASED."
+                        android:textSize="16sp"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs16"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr16"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Reci:''Utičem se Gospodaru svitanja, od zla onoga što On stvara, i od zla mrkle noći kad razastre tmina, i od zla onih koje u uzlove pušu, i od zla zavidljivca kad zavist ne krije.''"
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs16"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="El-Felek"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio16"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac16"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text=" 3 "
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio16"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="-8dp"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="2dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:onClick="clickLayout17"
+                    android:clickable="true"
+                    android:id="@+id/layout17"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txtAr17_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/fab2"
+                        android:text="بسم الله الرحمن الرحيم"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+                    <TextView
+                        android:id="@+id/txtAr17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtAr17_1"
+                        android:textColor="@color/arapski"
+                        android:textSize="17sp"
+                        android:text="قُلْ أَعُوذُ بِرَبِّ النَّاسِ, مَلِكِ النَّاسِ, إِلَهِ النَّاسِ, مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ, الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ, مِنَ الْجِنَّةِ وَ النَّاسِ"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtTr17"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtAr17"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:text="KUL E`UZU BI RABBI-N-NAS, MELIKI-N-NAS, ILAHI-N-NAS, MIN ŠERRI-L-VESVASI-L-HANNAS, ELLEZI JUVESVISU FI SUDURI-N-NAS, MINE-L-DZINNETI VE-N-NAS."
+                        android:textSize="16sp"
+                        android:padding="8dp"/>
+
+                    <TextView
+                        android:id="@+id/txtBs17"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtTr17"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/bosanski"
+                        android:textSize="17sp"
+                        android:text="Reci:''Tražim zaštitu Gospodara ljudi, Vladara ljudi, Boga ljudi, od zla šejtana – koji nanosi zle misli pa se skrije, koji zle misli unosi u srca ljudi, od džina i od ljudi.''"
+                        android:padding="8dp"/>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/txtBs17"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="2dp"
+                            android:text="En-Nas"
+                            android:textColor="@color/hadisi"
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
+
+                        </TextView>
+
+                        <Button
+                            android:id="@+id/btn_audio17"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/zvuk_backgorund"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+
+                        </Button>
+
+                        <TextView
+                            android:id="@+id/btn_brojac17"
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginStart="1dp"
+                            android:background="@drawable/okvir"
+                            android:fontFamily="@font/clear_bold"
+                            android:gravity="center"
+                            android:text=" 3 "
+                            android:textColor="@color/brojac"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/btn_audio17"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0">
+
+                        </TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+    
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

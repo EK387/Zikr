@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#323333</color>
+    <color name="colorAccent">#323333</color>
+    <color name="colorPrimaryDark">#323333</color>
+    <color name="arapski">#535D61</color>
+    <color name="transkripcija">#8E8C8C</color>
+    <color name="bosanski">#73939D</color>
+    <color name="pozadina">#D6D6DA</color>
+    <color name="fab1">#4DDCDFE2</color>
+    <color name="fab2">#8E8C8C</color>
+    <color name="brojac">#80050505</color>
+    <color name="hadisi">#E9B175</color>
+    <color name="colorON">#FBB040</color>
+    <color name="colorOFF">#D6D6DA</color>
+    <color name="layout">#66E0C7AB</color>
+
+
+    <color name="toggleOnColor">#8E8C8C </color>
+    <color name="hadith">#0C0E24</color>
+    <color name="toggleOffColor">@android:color/transparent</color>
+    <color name="uncheckedTextColor">#333</color>
+    <color name="CheckedTextColor">#8E8C8C</color>
+</resources>
