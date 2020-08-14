@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,35 +15,35 @@
         android:layout_height="180dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-<com.google.android.material.appbar.CollapsingToolbarLayout
-    android:id="@+id/collapsing_toolbar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-    app:contentScrim="?attr/colorPrimary"
-    app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
-    <ImageView
-        android:id="@+id/ivImagec"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_collapseMode="parallax"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/sunrise" />
-
-
+            <ImageView
+                android:id="@+id/ivImagec"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/sunrise" />
 
 
-   <TextView
-       android:id="@+id/txtShow"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:fontFamily="@font/clear_light"
-       android:padding="10dp"
-       android:background="@color/brojac"
-       android:layout_marginTop="20dp"
-       android:text="Najbolje vrijeme za učenja jutarnjeg zikra je od pojave zore pa do izlaska sunca."
-       android:textColor="@color/pozadina"
-       android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/txtShow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/clear_light"
+                android:padding="10dp"
+                android:background="@color/brojac"
+                android:layout_marginTop="20dp"
+                android:text="Najbolje vrijeme za učenja jutarnjeg zikra je od pojave zore pa do izlaska sunca."
+                android:textColor="@color/pozadina"
+                android:textSize="15sp" />
 
 
 
@@ -70,8 +72,8 @@
                         android:layout_marginBottom="8dp"
                         android:fitsSystemWindows="true"
                         android:text="AR "
-                        android:textColor="@color/fab2"
-
+                        android:checked="true"
+                        android:textColor="@color/pozadina"
                         android:theme="@style/mySwitch"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/BTNtrans"
@@ -85,7 +87,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:textColor="@color/fab2"
+                        android:checked="true"
+                        android:textColor="@color/pozadina"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="8dp"
                         android:text="TR "
@@ -108,7 +111,8 @@
                         android:text="BS "
                         android:theme="@style/mySwitch"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:textColor="@color/fab2"
+                        android:checked="true"
+                        android:textColor="@color/pozadina"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -124,7 +128,7 @@
             </androidx.appcompat.widget.Toolbar>
 
 
-</com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -157,38 +161,38 @@
                     android:id="@+id/layout1"
                     android:layout_width="match_parent"
                     android:onClick="clickLayout1"
-                     android:clickable="true"
+                    android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
 
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/txtAr1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/arapski"
-                    android:text="أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ, وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْم,ِ وَخَيرَ مَا بَعْدَهُ, وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ, وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ"
-                    android:textSize="17sp"
-                    android:fontFamily="@font/droid_regular"
-                    android:padding="8dp"/>
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/txtAr1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/arapski"
+                        android:text="أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ, وَالْحَمْدُ لِلَّهِ، لاَ إِلَهَ إلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْم,ِ وَخَيرَ مَا بَعْدَهُ, وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ, وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/droid_regular"
+                        android:padding="8dp"/>
 
 
-                <TextView
-                    android:id="@+id/txtTr1"
-                    android:layout_width="match_parent"
-                    android:layout_below="@+id/txtAr1"
-                    android:fontFamily="@font/clear_regular"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/transkripcija"
-                    android:textSize="16sp"
-                    android:text="ASBAHNĀ VE ASBEHAL-MULKU LILLAH. VEL-HAMDULILLĀH. LĀ ILĀHE ILLALLĀHU VAHDEHŪ LĀ ŠERÎKE LEHŪ LEHUL-MULKU VE LEHUL-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ’IN KADÎR. RABBI ES’ELUKE HAJRE MĀ FÎ HĀZEL-JEVMI VE HAJRE MĀ BA‘DEH. VE EŪ‘ZU BIKE MIN ŠERRI HĀZEL-JEVMI VE ŠERRI MA BA‘DEH. RABBI EŪ‘ZU BIKE MINEL-KESELI VE SŪ’IL-KIBER. RABBI EŪ‘ZU BIKE MIN ‘AZĀBIN FIN-NARI VE ‘AZĀBIN FIL-KABR. "
-                    android:padding="8dp"/>
+                    <TextView
+                        android:id="@+id/txtTr1"
+                        android:layout_width="match_parent"
+                        android:layout_below="@+id/txtAr1"
+                        android:fontFamily="@font/clear_regular"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/transkripcija"
+                        android:textSize="16sp"
+                        android:text="ASBAHNĀ VE ASBEHAL-MULKU LILLAH, VEL-HAMDULILLĀH, LĀ ILĀHE ILLALLĀHU VAHDEHŪ LĀ ŠERÎKE LEH, LEHUL-MULKU VE LEHUL-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ’IN KADÎR, RABBI ES’ELUKE HAJRE MĀ FÎ HĀZEL-JEVM, VE HAJRE MĀ BA‘DEH, VE EŪ‘ZU BIKE MIN ŠERRI HĀZEL-JEVMI VE ŠERRI MA BA‘DEH, RABBI EŪ‘ZU BIKE MINEL-KESEL, VE SŪ’IL-KIBER, RABBI EŪ‘ZU BIKE MIN ‘AZĀBIN FIN-NARI VE ‘AZĀBIN FIL-KABR. "
+                        android:padding="8dp"/>
 
                     <TextView
                         android:id="@+id/txtBs1"
                         android:layout_width="match_parent"
                         android:layout_below="@id/txtTr1"
-                         android:fontFamily="@font/clear_regular"
+                        android:fontFamily="@font/clear_regular"
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
@@ -230,14 +234,14 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio1"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio1"
                             app:layout_constraintTop_toTopOf="parent">
 
 
                         </Button>
 
                         <Button
-                            android:id="@+id/btn_audio1"
+                            android:id="@+id/btnaudio1"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginStart="8dp"
@@ -293,10 +297,8 @@
                         android:fontFamily="@font/clear_regular"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/txtAr15"
-
                         android:textColor="@color/transkripcija"
-                        android:text="ASBAHNA 'ALA FITRETI-L-ISLAM, VE 'ALA KELIMETI-L-IHLAS, VE ’ALA DINI NEBIJJINA MUHAMMEDIN, SALLĀLLAHU ‘ALEJHI VE SELLEM, VE 'ALA MILLETI EBINA IBRAHIME HANIFEN MUSLIMA, VE MA KANE MINE-L-MUŠRIKIN."
-                        android:textSize="16sp"
+                        android:text="ASBAHNĀ ‘ALĀ FITRETIL-ISLĀM, VE ‘ALĀ KELIMETIL-IHLĀS, VE ‘ALĀ DÎNI NEBIJJINĀ MUHAMMEDIN, SALLALLĀHU ‘ALEJHI VE SELLEM, VE ‘ALĀ MILLETI EBÎNĀ IBRĀHÎME HANÎFEN MUSLIMA, VE MĀ KĀNE MINEL-MUŠRIKÎN."                        android:textSize="16sp"
                         android:padding="8dp"/>
 
                     <TextView
@@ -335,13 +337,13 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio2"
+                            android:id="@+id/btnaudio2"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
                             android:layout_marginTop="16dp"
-                            android:layout_marginStart="8dp"
                             android:background="@drawable/zvuk_backgorund"
+                            android:layout_marginStart="8dp"
                             android:foreground="?android:attr/selectableItemBackground"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -364,7 +366,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="15dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio2"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio2"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -386,7 +388,7 @@
                 app:cardBackgroundColor="@android:color/white">
 
                 <RelativeLayout
-                   android:id="@+id/layout3"
+                    android:id="@+id/layout3"
                     android:layout_width="match_parent"
                     android:onClick="clickLayout3"
                     android:clickable="true"
@@ -411,7 +413,7 @@
                         android:fontFamily="@font/clear_regular"
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
-                        android:text="ALLĀHUMME ‘ĀLIMEL-GAJBI VEŠ-ŠEHĀDETI FĀTIRES-SEMĀVATI VEL-ERDI RABBE KULLI ŠEJ’IN VE MELIKEH. EŠHEDU EN LĀ ILĀHE ILLA ENTE EŪ‘ZU BIKE MIN ŠERRI NEFSÎ VE ŠERRIŠ-ŠEJTĀNI VE ŠIRKIH. VE EN AKTERIFE  ‘ALĀ NEFSÎ SŪ’EN EV EDŽURREHŪ ILĀ MUSLIM. "
+                        android:text="ALLĀHUMME ‘ĀLIMEL-GAJBI VEŠ-ŠEHĀDEH, FĀTIRES-SEMĀVATI VEL-ERD, RABBE KULLI ŠEJ’IN VE MELIKEH, EŠHEDU EN LĀ ILĀHE ILLA ENT, EŪ‘ZU BIKE MIN ŠERRI NEFSÎ VE ŠERRIŠ-ŠEJTĀNI VE ŠIRKIH, VE EN AKTERIFE ‘ALĀ NEFSÎ SŪ’EN EV EDŽURREHŪ ILĀ MUSLIM."
                         android:textSize="16sp"
                         android:padding="8dp"/>
 
@@ -460,14 +462,14 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio3"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio3"
                             app:layout_constraintTop_toTopOf="parent">
 
 
                         </Button>
 
                         <Button
-                            android:id="@+id/btn_audio3"
+                            android:id="@+id/btnaudio3"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginStart="8dp"
@@ -524,7 +526,7 @@
                         android:fontFamily="@font/clear_regular"
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
-                        android:text="ALLĀHUMME INNĪ ES ELUKE-L-‘AFVE VE-L-‘ĀFIJEH, FI-D-DUNJĀ VE-L-ĀHIREH, ALLĀHUMME INNĪ ES‘ELUKE-L-‘AFVE VE-L-‘ĀFIJEH, FĪ DĪNĪ VE DUNJĀJE VE EHLĪ VE MĀLĪ, ALLĀHUMME- STUR ‘AVRĀTĪ, VE ĀMIN REV‘ĀTĪ, ALLĀHUMME-HFAZNĪ MIN BEJNI JEDEJJE VE MIN HALFĪ, VE ‘AN JEMĪNĪ VE ‘AN ŠIMĀLĪ, VE MINFEVKĪ, VE E‘ŪZU BI‘AZAMETIKE EN UGTĀLE MIN TAHTĪ. "
+                        android:text="ALLĀHUMME INNÎ ES’ELUKEL-‘AFVE VEL-‘ĀFIJEH, FID-DUN’JĀ VEL-ĀHIREH, ALLĀHUMME INNÎ ES’ELUKEL-‘AFVE VEL-‘ĀFIJEH, FI DÎNÎ VE DUN’JĀJE VE EHLÎ VE MĀLÎ, ALLĀHUMMESTUR ‘AVRĀTI, VE ĀMIN REV‘ĀTI, ALLAHUMMAHFAZNÎ  MIN BEJNI JEDEJJE VE MIN HALFÎ, VE ‘AN JEMINÎ VE ‘AN ŠIMĀLÎ, VE MIN FEVKÎ, VE EŪ‘ZU BI ‘AZAMETIKE EN UGTĀLE MIN TAHTÎ."
                         android:textSize="16sp"
                         android:padding="8dp"/>
 
@@ -574,14 +576,14 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio4"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio4"
                             app:layout_constraintTop_toTopOf="parent">
 
 
                         </Button>
 
                         <Button
-                            android:id="@+id/btn_audio4"
+                            android:id="@+id/btnaudio4"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginStart="8dp"
@@ -640,7 +642,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="ALLĀHUMME BIKE ASBAHNĀ, VE BIKE EMSEJNĀ, VE BIKE NAHJĀ VE BIKE NEMŪTU VE ILEJKEN-NUŠŪR."
+                        android:text="ALLĀHUMME BIKE ASBAHNĀ, VE BIKE EMSEJNĀ, VE BIKE NAHJĀ VE BIKE NEMŪT, VE ILEJKEN-NUŠŪR."
                         android:padding="8dp"/>
 
                     <TextView
@@ -677,7 +679,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio5"
+                            android:id="@+id/btnaudio5"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -706,7 +708,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio5"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio5"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -754,7 +756,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="JA HAJJU JA KAJJŪM. BI RAHMETIKE ESTEGÎS. ASLIH LÎ ŠE’NÎ KULLEH. VE LĀ TEKILNÎ ILĀ NEFSÎ TARFETE ‘AJN. "
+                        android:text="JA HAJJU JA KAJJŪM, BI RAHMETIKE ESTEGÎS, ASLIH LÎ ŠE’NÎ KULLEH, VE LĀ TEKILNÎ ILĀ NEFSÎ TARFETE ‘AJN. "
                         android:padding="8dp"/>
 
                     <TextView
@@ -791,7 +793,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio6"
+                            android:id="@+id/btnaudio6"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -820,7 +822,7 @@
                             android:text="1"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio6"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio6"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -868,7 +870,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="ALLĀHUMME ENTE RABBĪ LĀ ILĀHE ILLĀ ENTE HALEKTENĪ VE ENE ‘ABDUKE (žene će reći: VE ENE EMETUKE) VE ENE ‘ALĀ ‘AHDIKE VE VA‘DIKE MESTETA‘TU, E‘ŪZU BIKE MIN ŠERRI MĀ SANA‘TU EBŪ-U LEKE BI NI‘METIKE ‘ALEJJE, VE EBŪ-U BIZENBĪ FAGFIRLĪ FE INNEHU LĀ JAGFIRU-Z-ZUNŪBE ILLĀ ENTE."
+                        android:text="ALLĀHUMME ENTE RABBĪ LĀ ILĀHE ILLĀ ENT, HALEKTENĪ VE ENE ‘ABDUKE (žene će reći: VE ENE EMETUKE) VE ENE ‘ALĀ ‘AHDIKE VE VA‘DIKE MESTETA‘T, E‘ŪZU BIKE MIN ŠERRI MĀ SANA‘T, EBŪ'U LEKE BI NI‘METIKE ‘ALEJJ, VE EBŪ’U BIZENBĪ, FAGFIRLĪ, FE INNEHU LĀ JAGFIRUZ-ZUNŪBE ILLĀ ENT."
                         android:padding="8dp"/>
 
                     <TextView
@@ -905,7 +907,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio7"
+                            android:id="@+id/btnaudio7"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -934,7 +936,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio7"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio7"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -982,7 +984,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="HASBIJALLĀHU LĀ ILĀHE ILLĀ HUVE ‘ALEJHI TEVEKKELTU VE HUVE RABBU-L-‘ARŠIL ‘AZĪM. "
+                        android:text="HASBIJALLĀHU LĀ ILĀHE ILLĀ HUVE ‘ALEJHI TEVEKKELTU VE HUVE RABBUL-‘ARŠIL ‘AZĪM. "
                         android:padding="8dp"/>
 
                     <TextView
@@ -993,7 +995,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
-                        android:text="Dovoljan mi je Allah, nema Boga osim Njega, na Njega se oslanjam. On je Gospodar Arša veličanstvenog."
+                        android:text="Dovoljan mi je Allah, nema boga osim Njega, na Njega se oslanjam. On je Gospodar Arša veličanstvenog."
                         android:padding="8dp"/>
 
 
@@ -1021,7 +1023,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio8"
+                            android:id="@+id/btnaudio8"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -1050,7 +1052,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio8"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio8"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -1098,7 +1100,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="BISMILLĀHILLEZI LA JEDURRU MEA‘SMIHÎ ŠEJ’UN FIL-ERDI VE LĀ FIS-SEMĀ’I VE HUVES-SEMÎ‘UL-ALÎM. "
+                        android:text="BISMILLĀHILLEZI LA JEDURRU MEA‘SMIHÎ ŠEJ’UN FIL-ERDI VE LĀ FIS-SEMĀ, VE HUVES-SEMÎ‘UL-ALÎM."
                         android:padding="8dp"/>
 
                     <TextView
@@ -1109,7 +1111,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
-                        android:text="U ime Onoga uz čije ime neće nauditi ništa na nebesima niti na zemlji, a On sve čuje i sve zna."
+                        android:text="U ime Onoga uz čije ime neće nauditi ništa na nebesima niti na Zemlji, a On sve čuje i sve zna."
                         android:padding="8dp"/>
 
 
@@ -1137,7 +1139,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio9"
+                            android:id="@+id/btnaudio9"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -1166,7 +1168,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio9"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio9"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -1201,7 +1203,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/arapski"
-                  android:text="رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ صلى الله عليه وسلم نَبِيّاً"
+                        android:text="رَضِيتُ بِاللَّهِ رَبَّاً، وَبِالْإِسْلاَمِ دِيناً، وَبِمُحَمَّدٍ صلى الله عليه وسلم نَبِيّاً"
                         android:textSize="17sp"
                         android:fontFamily="@font/droid_regular"
                         android:padding="8dp"/>
@@ -1214,7 +1216,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="REDĪTU BILLĀHI RABBĀ, VE BI-L-ISLĀMI DĪNĀ, VE BI MUHAMMEDIN SALLĀLLAHU ‘ALEJHI VE SELLEME NEBIJJĀ. "
+                        android:text="REDĪTU BILLĀHI RABBĀ, VE BIL-ISLĀMI DĪNĀ, VE BI MUHAMMEDIN SALLĀLLAHU ‘ALEJHI VE SELLEME NEBIJJĀ."
                         android:padding="8dp"/>
 
                     <TextView
@@ -1225,7 +1227,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
-                        android:text="Zadovoljan sam Allahom Gospodarom, Islamom vjerom, i Muhamedom s.a.v.s Vjerovjesnikom."
+                        android:text="Zadovoljan sam Allahom Gospodarom, islamom vjerom, i Muhamedom, sallallahu alejhi ve sellem, Vjerovjesnikom."
                         android:padding="8dp"/>
 
 
@@ -1253,7 +1255,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio11"
+                            android:id="@+id/btnaudio11"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -1282,7 +1284,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio11"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio11"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -1329,7 +1331,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="SUBHĀNALLĀHI VE BI HAMDIHÎ ‘ADEDE HALKIHÎ VE RIDĀ NEFSIHÎ VE ZINETE ‘ARŠIHÎ VE MIDĀDE KELIMATIH. "
+                        android:text="SUBHĀNALLĀHI VE BI HAMDIH, ‘ADEDE HALKIH, VE RIDĀ NEFSIH, VE ZINETE ‘ARŠIH, VE MIDĀDE KELIMATIH. "
                         android:padding="8dp"/>
 
                     <TextView
@@ -1342,7 +1344,6 @@
                         android:text="Neka je hvaljen i slavljen Allah u razmjerama brojnosti Njegovih stvorenja, u razmjeri Njegovog zadovoljstva, težine Njegovog prijestolja i osebujnosti Njegovih riječi! "
                         android:textSize="17sp"
                         android:padding="8dp"/>
-
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -1362,13 +1363,12 @@
                             android:textSize="12dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            >
+                            app:layout_constraintTop_toTopOf="parent">
 
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio12"
+                            android:id="@+id/btnaudio12"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -1379,7 +1379,6 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
-
 
                         </Button>
 
@@ -1397,7 +1396,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio12"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio12"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -1455,7 +1454,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
-                        android:text="Kaže Poslanik s.a.v.s: “Ko kaže u toku jednog dana sto puta: ‘Subhanallahi ve bi hamdihi’ (Slavljen je Allah i Njemu pripada sva hvala), oprošteni su mu grijesi, pa makar ih bilo kao morske pjene."
+                        android:text="Kaže Poslanik, sallallahu alejhi ve sellem:“Ko kaže u toku jednog dana 100  puta: “Subhanallahi ve bi hamdih“ (Slavljen je Allah i Njemu pripada sva hvala), oprošteni su mu grijesi, pa makar ih bilo kao morske pjene."
                         android:padding="8dp"/>
 
 
@@ -1483,7 +1482,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio13"
+                            android:id="@+id/btnaudio13"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -1512,7 +1511,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="13dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio13"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio13"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -1559,7 +1558,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="LĀ ILĀHE ILLALLĀHU VAHDEHŪ LĀ ŠERÎKE LEHŪ LEHUL-MULKU VE LEHUL-HAMDU VE HUVE ‘ALĀ KULLI ŠEJ’IN KADÎR."
+                        android:text="LĀ ILĀHE ILLALLĀHU VAHDEHŪ LĀ ŠERÎKE LEH, LEHUL-MULKU VE LEHUL-HAMD, VE HUVE ‘ALĀ KULLI ŠEJ’IN KADÎR."
                         android:padding="8dp"/>
 
                     <TextView
@@ -1598,7 +1597,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio18"
+                            android:id="@+id/btnaudio18"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -1627,7 +1626,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio18"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio18"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -1666,7 +1665,7 @@
                         android:padding="6dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="2dp"
-                        android:text="Rekao je Resulullah, sallallahu alejhi ve sellem: ”Ko donese na mene deset salavata ujutro i deset salavata navečer, sustiće ga moj šefa’at na Sudnjem Danu.”"
+                        android:text="Rekao je Resulullah, sallallahu alejhi ve sellem:”Ko donese na mene deset salavata ujutro i deset salavata navečer, sustići će ga moj šefa’at na Sudnjem danu.”"
                         android:textColor="@color/fab2"
                         android:textSize="14dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -1714,7 +1713,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="ALLAHUMME SALLI ’ALA MUHAMMEDIN VE ’ALA ALI MUHAMMEDIN , KEMA SALLEJTE ‘ALA IBRAHIME VE ’ALA ALI IBRAHIME, INNEKE HAMIDUN MEDŽID. ALLAHUMME BARIK ’ALA MUHAMMEDIN VE ’ALA ALI MUHAMMEDIN KEMA BAREKTE ’ALA IBRAHIME VE ’ALA ALI IBRAHIME INNEKE HAMIDUN MEDŽID. "
+                        android:text="ALLAHUMME SALLI ’ALA MUHAMMEDIN VE ’ALA ALI MUHAMMED, KEMA SALLEJTE ‘ALA IBRAHIME VE ’ALA ALI IBRAHIM, INNEKE HAMIDUN MEDŽID, ALLAHUMME BARIK ’ALA MUHAMMEDIN VE ’ALA ALI MUHAMMED, KEMA BAREKTE ’ALA IBRAHIME VE ’ALA ALI IBRAHIM, INNEKE HAMIDUN MEDŽID."
                         android:padding="8dp"/>
 
                     <TextView
@@ -1725,7 +1724,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
-                        android:text="Allahu moj, smiluj se Muhammedu, a.s., i njegovom potomstvu, kao što si se smilovao Ibrahimu, a.s., i njegovom potomstvu. Zaista si Ti Hvaljeni i Vječni. Allahu moj, blagoslovi Muhammeda, a.s., i njegovo potomstvo, kao što si blagoslovio Ibrahima, a.s., i njegovo potomstvo. Doista si Ti Hvaljen i Vječan."
+                        android:text="Allahu moj, smiluj se Muhammedu, sallallahu alejhi ve sellem, i njegovom potomstvu, kao što si se smilovao Ibrahimu, alejhisselam, i njegovom potomstvu. Zaista si Ti hvaljeni i vječni. Allahu moj, blagoslovi Muhammeda, sallallahu alejhi ve sellem, i njegovo potomstvo, kao što si blagoslovio Ibrahima, alejhisselam, i njegovo potomstvo. Doista si Ti hvaljen i vječan."
                         android:padding="8dp"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -1753,7 +1752,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio19"
+                            android:id="@+id/btnaudio19"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -1782,7 +1781,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio19"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio19"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -1808,7 +1807,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
                         android:textSize="16sp"
-                        android:text="ALLAHUMME SALLI ’ALA MUHAMMEDIN VE ’ALA EZVADŽIHI VE ZURRIJJETIHI KEMA SALLEJTE ’ALA ALI IBRAHIME. VE BARIK ’ALA MUHAMMEDIN VE ’ALA EZVADŽIHI VE ZURRIJJETIHI KEMA BAREKTE ’ALA ALI IBRAHIME. INNEKE HAMIDUN MEDŽID. "
+                        android:text="ALLAHUMME SALLI ’ALA MUHAMMEDIN VE ’ALA EZVADŽIHI VE ZURRIJJETIH, KEMA SALLEJTE ’ALA ALI IBRAHIM, VE BARIK ’ALA MUHAMMEDIN VE ’ALA EZVADŽIHI VE ZURRIJJETIH, KEMA BAREKTE ’ALA ALI IBRAHIM, INNEKE HAMIDUN MEDŽID. "
                         android:padding="8dp"/>
 
                     <TextView
@@ -1818,7 +1817,7 @@
                         android:fontFamily="@font/clear_regular"
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
-                        android:text="Allahu moj, smiluj se Muhammedu, a.s., njegovim ženama i njegovu potomstvu, kao što si se smilovao porodici Ibrahima, a.s. Allahu moj, blagoslovi Muhammeda, a.s., njegove žene i njegovo potomstvo, kao što si blagoslovio Ibrahima, a.s., i njegovu porodicu. Doista, Ti si Hvaljeni i Vječni."
+                        android:text="Allahu moj, smiluj se Muhammedu, sallallahu alejhi ve sellem, njegovim suprugama i njegovu potomstvu, kao što si se smilovao porodici Ibrahima, alejhisselam. Allahu moj, blagoslovi Muhammeda, sallallahu alejhi ve sellem, njegove supruge i njegovo potomstvo, kao što si blagoslovio Ibrahima, alejhisselam, i njegovu porodicu. Doista, Ti si hvaljeni i vječni."
                         android:textSize="17sp"
                         android:padding="8dp"/>
 
@@ -1846,7 +1845,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio19_1"
+                            android:id="@+id/btnaudio19_1"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -1875,7 +1874,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio19_1"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio19_1"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -1945,7 +1944,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
-                        android:text="Allah je, nema boga osim Njega, Živi i Vječni! Održavatelj! Ne obuzima Ga ni drijemež ni san! Njegovo je ono što je na nebesima i na Zemlji! Ko se može pred Njim zauzimati bez Njegovog dopuštenja?! On zna šta je bilo prije i šta će biti poslije njih i oni ne mogu obuhvatiti od Njegovoga znanja osim koliko On želi! Njegov Prijesto obuhvata i nebesa i Zemlju i Njemu nije teško održavati ih! On je Svevišnji i Veličanstveni!"
+                        android:text="Allah je, nema boga osim Njega, Živi i Vječni! Održavatelj! Ne obuzima Ga ni drijemež ni san! Njegovo je ono što je na nebesima i na Zemlji! Ko se može pred Njim zauzimati bez Njegovog dopuštenja?! On zna šta je bilo prije i šta će biti poslije njih i oni ne mogu obuhvatiti od Njegovoga znanja osim koliko On želi! Njegov Pijedestal obuhvata i nebesa i Zemlju i Njemu nije teško održavati ih! On je Svevišnji i Veličanstveni!"
                         android:padding="8dp"/>
 
 
@@ -1973,7 +1972,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio14"
+                            android:id="@+id/btnaudio14"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -2002,7 +2001,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio14"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio14"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -2058,7 +2057,7 @@
                         android:fontFamily="@font/clear_regular"
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
-                        android:text="KUL HUVALLAHU EHAD, ALLAHU-S-SAMED, LEM JELID VE LEM JULED, VE LEM JEKUL-LEHU KUFUVEN EHAD."
+                        android:text="KUL HUVALLAHU EHAD, ALLAHUS-SAMED, LEM JELID VE LEM JULED, VE LEM JEKUL-LEHU KUFUVEN EHAD."
                         android:textSize="16sp"
                         android:padding="8dp"/>
 
@@ -2070,7 +2069,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
-                        android:text="Reci:''On je Allah - Jedan! Allah je utočište svakom! Nije rodio i rođen nije, i niko Mu ravan nije! ''"
+                        android:text="Reci:”On je Allah - Jedan! Allah je utočište svakom! Nije rodio i rođen nije, i niko Mu ravan nije!”"
                         android:padding="8dp"/>
 
 
@@ -2098,7 +2097,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio15"
+                            android:id="@+id/btnaudio15"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -2127,7 +2126,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio15"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio15"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -2184,7 +2183,7 @@
                         android:fontFamily="@font/clear_regular"
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
-                        android:text="KUL E`UZU BI RABBI-L-FELEK, MIN ŠERRI MA HALEK, VE MIN ŠERRI GASIKIN IZA VEKAB, VE MIN ŠERRI-N-NEFFASATI FI-L-UKAD, VE MIN ŠERRI HASIDIN IZA HASED."
+                        android:text="KUL E`UZU BI RABBIL-FELEK, MIN ŠERRI MA HALEK, VE MIN ŠERRI GASIKIN IZA VEKAB, VE MIN ŠERRIN-NEFFASATI FIL-UKAD, VE MIN ŠERRI HASIDIN IZA HASED."
                         android:textSize="16sp"
                         android:padding="8dp"/>
 
@@ -2196,7 +2195,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
-                        android:text="Reci:''Utičem se Gospodaru svitanja, od zla onoga što On stvara, i od zla mrkle noći kad razastre tmina, i od zla onih koje u uzlove pušu, i od zla zavidljivca kad zavist ne krije.''"
+                        android:text="Reci:”Utičem se Gospodaru svitanja, od zla onoga što On stvara, i od zla mrkle noći kad razastre tmina, i od zla onih koje u uzlove pušu, i od zla zavidljivca kad zavist ne krije.”"
                         android:padding="8dp"/>
 
 
@@ -2224,7 +2223,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio16"
+                            android:id="@+id/btnaudio16"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -2253,7 +2252,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio16"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio16"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -2310,7 +2309,7 @@
                         android:fontFamily="@font/clear_regular"
                         android:layout_height="wrap_content"
                         android:textColor="@color/transkripcija"
-                        android:text="KUL E`UZU BI RABBI-N-NAS, MELIKI-N-NAS, ILAHI-N-NAS, MIN ŠERRI-L-VESVASI-L-HANNAS, ELLEZI JUVESVISU FI SUDURI-N-NAS, MINE-L-DZINNETI VE-N-NAS."
+                        android:text="KUL E`UZU BI RABBIN-NAS, MELIKIN-NAS, ILAHIN-NAS, MIN ŠERRIL-VESVASIL-HANNAS, ELLEZI JUVESVISU FI SUDURIN-NAS, MINEL-DŽINNETI VEN-NAS."
                         android:textSize="16sp"
                         android:padding="8dp"/>
 
@@ -2322,7 +2321,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/bosanski"
                         android:textSize="17sp"
-                        android:text="Reci:''Tražim zaštitu Gospodara ljudi, Vladara ljudi, Boga ljudi, od zla šejtana – koji nanosi zle misli pa se skrije, koji zle misli unosi u srca ljudi, od džina i od ljudi.''"
+                        android:text="Reci:”Tražim zaštitu Gospodara ljudi, Vladara ljudi, Boga ljudi, od zla šejtana – koji nanosi zle misli pa se skrije, koji zle misli unosi u srca ljudi, od džina i od ljudi.”"
                         android:padding="8dp"/>
 
 
@@ -2350,7 +2349,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btn_audio17"
+                            android:id="@+id/btnaudio17"
                             android:layout_width="45dp"
                             android:layout_height="30dp"
                             android:layout_marginBottom="4dp"
@@ -2379,7 +2378,7 @@
                             android:textColor="@color/brojac"
                             android:textSize="14dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/btn_audio17"
+                            app:layout_constraintStart_toEndOf="@+id/btnaudio17"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_bias="0.0">
 
@@ -2396,5 +2395,5 @@
 
 
     </androidx.core.widget.NestedScrollView>
-    
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,6 +1,6 @@
 @file:Suppress("UNREACHABLE_CODE")
 
-package com.example.zikr
+package com.jutarnji.zikr
 
 import android.content.Context
 import android.content.SharedPreferences

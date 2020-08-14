@@ -9,6 +9,7 @@
     <color name="pozadina">#D6D6DA</color>
     <color name="fab1">#4DDCDFE2</color>
     <color name="fab2">#8E8C8C</color>
+    <color name="button_disabled">#808E8C8C</color>
     <color name="brojac">#80050505</color>
     <color name="hadisi">#E9B175</color>
     <color name="colorON">#FBB040</color>

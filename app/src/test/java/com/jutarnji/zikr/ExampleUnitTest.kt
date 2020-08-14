@@ -1,4 +1,4 @@
-package com.example.zikr
+package com.jutarnji.zikr
 
 import org.junit.Test
 

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.zikr">
-    <uses-permission android:name="android.permission.INTERNET"/>
+    package="com.jutarnji.zikr">
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
-
 
     <application
         android:allowBackup="true"
@@ -17,32 +16,35 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Vecernji">
-        </activity>
-        <activity android:name=".Jutarnji" />
-        <activity android:name=".MainActivity"
+        <activity android:name="com.jutarnji.zikr.About"></activity>
+        <activity android:name="com.jutarnji.zikr.Vecernji"></activity>
+        <activity android:name="com.jutarnji.zikr.Jutarnji" />
+        <activity
+            android:name="com.jutarnji.zikr.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-           
         </activity>
 
         <receiver
-            android:name=".NotificationReceiver"
-            android:enabled = "true"
-            android:exported= "false">
-        </receiver>
-        <receiver android:name=".AlarmRebootReceiver"
+            android:name="com.jutarnji.zikr.NightReceiver"
+            android:enabled="true"
+            android:exported="false"></receiver>
+        <receiver
+            android:name="com.jutarnji.zikr.MorningReceiver"
+            android:enabled="true"
+            android:exported="false"></receiver>
+        <receiver
+            android:name="com.jutarnji.zikr.AlarmRebootReceiver"
             android:enabled="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

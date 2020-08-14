@@ -1,4 +1,4 @@
-package com.example.zikr
+package com.jutarnji.zikr
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -13,8 +13,9 @@ import android.location.LocationManager
 import android.os.Build
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationManagerCompat
@@ -26,10 +27,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.gms.location.*
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.json.JSONException
 import java.util.*
 
@@ -71,187 +69,192 @@ class InitializeClass(context: Context) {
 
     }
 
-    suspend fun getTimeSunrise(context: Context) {
-       delay(15000)
+    fun getTimeSunrise(context: Context) {
 
-        val alarmCalendar2 = Calendar.getInstance()
-        alarmCalendar2.set(Calendar.HOUR_OF_DAY, sanriseHour)
-        alarmCalendar2.set(Calendar.MINUTE, sanriseMinute)
-        alarmCalendar2.set(Calendar.SECOND, 0)
-        alarmCalendar2.set(Calendar.MILLISECOND, 0)
 
-        Toast.makeText(
-            context,
-            "Alarm sharedpref (SUNRISE)  u $sanriseHour sati i $sanriseMinute minuta",
-            Toast.LENGTH_SHORT
-        ).show()
+        val alarmCalendar = Calendar.getInstance()
+        val calendarNow = Calendar.getInstance()
+        alarmCalendar.set(Calendar.HOUR_OF_DAY, sanriseHour)
+        alarmCalendar.set(Calendar.MINUTE, sanriseMinute)
+        alarmCalendar.set(Calendar.SECOND, 0)
+        alarmCalendar.set(Calendar.MILLISECOND, 0)
+   //Toast.makeText(context, "Pokreće se getTimeSUnrise sanriseHour($sanriseHour)", Toast.LENGTH_SHORT).show()
 
         alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        val intent1 = Intent(context, NotificationReceiver::class.java)
+        val intent = Intent(context, MorningReceiver::class.java)
 
         val pendingIntentSunrise =
-            PendingIntent.getBroadcast(context, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        if (alarmCalendar2.before(Calendar.getInstance())) {
-            alarmCalendar2.add(Calendar.DATE, 1)
+        if (alarmCalendar.after(calendarNow)) {
+            alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP,
+                alarmCalendar.timeInMillis,
+                AlarmManager.INTERVAL_DAY,
+                pendingIntentSunrise
+            )
+
+        } else {
+            alarmCalendar.add(Calendar.DAY_OF_MONTH, 1)
+            alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP,
+                alarmCalendar.timeInMillis,
+                AlarmManager.INTERVAL_DAY,
+                pendingIntentSunrise
+
+            )
         }
-        alarmManager.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            alarmCalendar2.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            pendingIntentSunrise
-        )
 
 
     }
+
     suspend fun getTimeSunrise1(context: Context) {
-        delay(8000)
+        delay(20000)
 
-        val alarmCalendar2 = Calendar.getInstance()
-        alarmCalendar2.set(Calendar.HOUR_OF_DAY, morningHourTrimmed)
-        alarmCalendar2.set(Calendar.MINUTE, morningMinuteTrimmed)
-        alarmCalendar2.set(Calendar.SECOND, 0)
-        alarmCalendar2.set(Calendar.MILLISECOND, 0)
-
-        Toast.makeText(
-            context,
-            "Direktam alarm(SUNRISE)  u $morningHourTrimmed sati i $morningMinuteTrimmed minuta",
-            Toast.LENGTH_SHORT
-        ).show()
-
+        val alarmCalendar = Calendar.getInstance()
+        val calendarNow2 = Calendar.getInstance()
+        alarmCalendar.set(Calendar.HOUR_OF_DAY, morningHourTrimmed)
+        alarmCalendar.set(Calendar.MINUTE, morningMinuteTrimmed)
+        alarmCalendar.set(Calendar.SECOND, 0)
+        alarmCalendar.set(Calendar.MILLISECOND, 0)
+    //Toast.makeText(context, "Pokreće se getTimeSUnrise1 morningHourTrimmed ($morningHourTrimmed i morningMinuteTrimmed $morningMinuteTrimmed)", Toast.LENGTH_SHORT).show()
         alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        val intent1 = Intent(context, NotificationReceiver::class.java)
+        val intent = Intent(context, MorningReceiver::class.java)
 
         val pendingIntentSunrise =
-            PendingIntent.getBroadcast(context, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        if (alarmCalendar2.before(Calendar.getInstance())) {
-            alarmCalendar2.add(Calendar.DATE, 1)
-        }
-        alarmManager.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            alarmCalendar2.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            pendingIntentSunrise
-        )
-
-
-    }
-    suspend fun getTimeSunset(context: Context) {
-        delay(15000)
-
-
-        val alarmCalendar1 = Calendar.getInstance()
-        val calendarNow = Calendar.getInstance()
-
-        //If alarm time has passed, set for tomorrow
-        alarmCalendar1.set(Calendar.HOUR_OF_DAY, sunsetHour)
-        alarmCalendar1.set(Calendar.MINUTE, sunsetMinute)
-        alarmCalendar1.set(Calendar.SECOND, 0)
-        alarmCalendar1.set(Calendar.MILLISECOND, 0)
-        Toast.makeText(
-            context,
-            "Alarm iz sharedpref (SANSET) $sunsetHour sati i $sunsetMinute minuta",
-            Toast.LENGTH_SHORT
-        ).show()
-
-        alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-        val intent2 = Intent(context, NotificationReceiver::class.java)
-        val pendingIntentSunset =
-            PendingIntent.getBroadcast(context, 1, intent2, PendingIntent.FLAG_UPDATE_CURRENT)
-
-
-        if (alarmCalendar1.after(calendarNow)) {
+        if (alarmCalendar.after(calendarNow2)) {
             alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
-                alarmCalendar1.timeInMillis,
+                alarmCalendar.timeInMillis,
+                AlarmManager.INTERVAL_DAY,
+                pendingIntentSunrise
+            )
+
+        } else {
+            alarmCalendar.add(Calendar.DAY_OF_MONTH, 1)
+            alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP,
+                alarmCalendar.timeInMillis,
+                AlarmManager.INTERVAL_DAY,
+                pendingIntentSunrise
+
+            )
+        }
+
+    }
+
+    fun getTimeSunset(context: Context) {
+
+        val alarmCalendar = Calendar.getInstance()
+        val calendarNow = Calendar.getInstance()
+
+        alarmCalendar.set(Calendar.HOUR_OF_DAY, sunsetHour)
+        alarmCalendar.set(Calendar.MINUTE, sunsetMinute)
+        alarmCalendar.set(Calendar.SECOND, 0)
+        alarmCalendar.set(Calendar.MILLISECOND, 0)
+   //Toast.makeText(context, "Pokreće se getTimeSunset sunsetHour ($sunsetHour)", Toast.LENGTH_SHORT).show()
+        alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(context, NightReceiver::class.java)
+        val pendingIntentSunset =
+            PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+
+        if (alarmCalendar.after(calendarNow)) {
+            alarmManager.setRepeating(
+                AlarmManager.RTC_WAKEUP,
+                alarmCalendar.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
                 pendingIntentSunset
             )
 
         } else {
-            alarmCalendar1.add(Calendar.DAY_OF_MONTH, 1)
+            alarmCalendar.add(Calendar.DAY_OF_MONTH, 1)
             alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
-                alarmCalendar1.timeInMillis,
+                alarmCalendar.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
                 pendingIntentSunset
             )
         }
     }
+
     suspend fun getTimeSunset1(context: Context) {
-        delay(7000)
+        delay(20000)
 
 
-        val alarmCalendar1 = Calendar.getInstance()
+        val alarmCalendar = Calendar.getInstance()
         val calendarNow = Calendar.getInstance()
-
-        //If alarm time has passed, set for tomorrow
-        alarmCalendar1.set(Calendar.HOUR_OF_DAY, nightHourTrimmed)
-        alarmCalendar1.set(Calendar.MINUTE, nightMinuteTrimmed)
-        alarmCalendar1.set(Calendar.SECOND, 0)
-        alarmCalendar1.set(Calendar.MILLISECOND, 0)
-        Toast.makeText(
-            context,
-            "Direktno alarm(SANSET) $nightHourTrimmed sati i $nightMinuteTrimmed minuta",
-            Toast.LENGTH_SHORT
-        ).show()
-
+        alarmCalendar.set(Calendar.HOUR_OF_DAY, nightHourTrimmed)
+        alarmCalendar.set(Calendar.MINUTE, nightMinuteTrimmed)
+        alarmCalendar.set(Calendar.SECOND, 0)
+        alarmCalendar.set(Calendar.MILLISECOND, 0)
+    // Toast.makeText(context, "Pokreće se getTimeSunset1 nightHourTrimmed ($nightHourTrimmed i nightMinuteTrimmed $nightMinuteTrimmed  )", Toast.LENGTH_SHORT).show()
         alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        val intent2 = Intent(context, NotificationReceiver::class.java)
+        val intent = Intent(context, NightReceiver::class.java)
         val pendingIntentSunset =
-            PendingIntent.getBroadcast(context, 1, intent2, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
 
-        if (alarmCalendar1.after(calendarNow)) {
+        if (alarmCalendar.after(calendarNow)) {
             alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
-                alarmCalendar1.timeInMillis,
+                alarmCalendar.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
                 pendingIntentSunset
             )
 
         } else {
-            alarmCalendar1.add(Calendar.DAY_OF_MONTH, 1)
+            alarmCalendar.add(Calendar.DAY_OF_MONTH, 1)
             alarmManager.setRepeating(
                 AlarmManager.RTC_WAKEUP,
-                alarmCalendar1.timeInMillis,
+                alarmCalendar.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
                 pendingIntentSunset
             )
         }
     }
+
+
     @SuppressLint("MissingPermission")
+    suspend fun location(activity: Activity) {
+
+        if (checkPermissions(activity)) {
+            try {
+                delay(7000)
+                fusedLocationClient.lastLocation.addOnCompleteListener(activity) { task ->
+
+                    val location: Location? = task.result
+                    if (location == null) {
 
 
-    suspend fun location (activity: Activity){
-        delay(2000)
-         fusedLocationClient.lastLocation.addOnCompleteListener(activity) { task ->
+                        requestNewLocationData(activity)
+                    } else {
+                        latitude = location.latitude.toString()
+                        longitude = location.longitude.toString()
+                        sharedPref.putLong(longitude)
+                        sharedPref.putLat(latitude)
 
-             val location: Location? = task.result
-             if (location == null) {
+                 // Toast.makeText(activity, "Pokreće se location funkcija  7 sekundi kasni $latitude", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                Toast.makeText(activity, e.message, Toast.LENGTH_LONG).show()
 
-                 requestNewLocationData(activity)
-             } else {
-                 latitude = location.latitude.toString()
-                 longitude = location.longitude.toString()
-
-                 sharedPref.putLong(longitude)
-                 sharedPref.putLat(latitude)
-                 Toast.makeText(
-                     activity,
-                     "Apdejtovane koordinate: $latitude i $longitude",
-                     Toast.LENGTH_SHORT
-                 ).show()
-             }
-         }
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(activity)
+            }
+        }
+    }
 
 
-     }
     @SuppressLint("MissingPermission")
     fun getLastLocation(activity: Activity) {
 
@@ -260,8 +263,8 @@ class InitializeClass(context: Context) {
 
         if (lat == "" && long == "") {
 
-
             if (checkPermissions(activity)) {
+
 
                 if (isLocationEnabled(activity)) {
 
@@ -271,41 +274,43 @@ class InitializeClass(context: Context) {
                         if (location == null) {
 
                             requestNewLocationData(activity)
+
                         } else {
                             latitude = location.latitude.toString()
                             longitude = location.longitude.toString()
-
-                                CoroutineScope(Dispatchers.Main).launch{
-                                    getApiUpdate(activity)
-                                    getTimeSunrise1(activity)
-                                    getTimeSunset1(activity)
-                                }
-
                             sharedPref.putLong(longitude)
                             sharedPref.putLat(latitude)
-                            Toast.makeText(
-                                activity,
-                                "Koordinate prvo pokretanje su: $latitude i $longitude",
-                                Toast.LENGTH_SHORT
-                            ).show()
+              //         Toast.makeText(activity, "Pokreće se funkcija getLastLocation", Toast.LENGTH_SHORT).show()
                         }
                     }
                 } else {
-                    showAlert(activity)
+
+                    if (!(activity).isFinishing) {
+                        try {
+                            showAlert(activity)
+                        } catch (e: WindowManager.BadTokenException) {
+                            Log.e("WindowManagerBad ", e.toString())
+                        }
+
+                    }
+
                 }
 
             } else {
-                requestPermissions(activity)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(activity)
+                }
             }
 
         }
 
-
     }
 
-  suspend fun getApi(context: Context) {
-       delay(10000)
-        val url = "http://api.aladhan.com/v1/timings?latitude=$lat&longitude=$long&method=4"
+    suspend fun getApi(context: Context) {
+        delay(10000)
+        val latt = sharedPref.getLat().toString()
+        val longg = sharedPref.getLong().toString()
+        val url = "http://api.aladhan.com/v1/timings?latitude=$latt&longitude=$longg&method=4"
 
         val mQ = Volley.newRequestQueue(context)
         val jsonArrayRequest =
@@ -337,11 +342,7 @@ class InitializeClass(context: Context) {
                         nightMinuteTrimmed = Sunset.split(":")[1].toInt()
                         sharedPref.putMinuteSunset(nightMinuteTrimmed)
 
-                        Toast.makeText(
-                            context,
-                            "GetApi (lat i long) sanriseHour: $sanriseHour i sanriseMinute: $sanriseMinute sunsetHour $sunsetHour sunsetminute $sunsetMinute" ,
-                            Toast.LENGTH_SHORT
-                        ).show()
+              //  Toast.makeText(context,"Pokrece se getApi,$latt&longitude=$longg, $morningMinuteTrimmed $nightHourTrimmed", Toast.LENGTH_SHORT).show()
 
                     } catch (e: JSONException) {
                         e.printStackTrace()
@@ -357,11 +358,11 @@ class InitializeClass(context: Context) {
     }
 
     suspend fun getApiUpdate(context: Context) {
-        delay(3000)
+        delay(12000)
 
-        val url = "http://api.aladhan.com/v1/timings?latitude=$latitude&longitude=$longitude&method=4"
+        val url =
+            "http://api.aladhan.com/v1/timings?latitude=$latitude&longitude=$longitude&method=4"
 
-        //Log.i("lat",lat)
         val mQ = Volley.newRequestQueue(context)
         val jsonArrayRequest =
             JsonObjectRequest(
@@ -379,8 +380,6 @@ class InitializeClass(context: Context) {
                             Sunrise.split(":")[0].replaceFirst("^0+(?!$)", "").toInt() - 1
                         sharedPref.putHourSunrise(morningHourTrimmed)
 
-
-
                         morningMinuteTrimmed =
                             Sunrise.split(":")[1].replaceFirst("^0+(?!$)", "").toInt()
                         sharedPref.putMinuteSunrise(morningMinuteTrimmed)
@@ -397,11 +396,7 @@ class InitializeClass(context: Context) {
 
                         nightMinuteTrimmed = Sunset.split(":")[1].toInt()
                         sharedPref.putMinuteSunset(nightMinuteTrimmed)
-                        Toast.makeText(
-                            context,
-                            "getApiUpdate (latitude i longitude) morningHour $morningHourTrimmed i morningMinute $morningMinuteTrimmed i nightHour $nightHourTrimmed i nightMinute $nightMinuteTrimmed ",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                  //  Toast.makeText(context,"Pokrece se getApiUpdate,  ucitava trenutne koordinate \"http://api.aladhan.com/v1/timings?latitude=$latitude&longitude=$longitude&method=4\"", Toast.LENGTH_SHORT).show()
 
                     } catch (e: JSONException) {
                         e.printStackTrace()
@@ -415,7 +410,9 @@ class InitializeClass(context: Context) {
             add(jsonArrayRequest)
         }
     }
+
     private fun showAlert(context: Context) {
+
         val dialog = AlertDialog.Builder(context)
         dialog.setTitle("Uključite lokaciju (GPS)")
             .setMessage(
@@ -427,12 +424,13 @@ class InitializeClass(context: Context) {
             }
             .setNegativeButton("Zatvori") { _, _ ->
             }
+
         dialog.show()
     }
 
     @SuppressLint("MissingPermission")
     fun requestNewLocationData(context: Context) {
-        locationRequest = LocationRequest().apply{
+        locationRequest = LocationRequest().apply {
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
             interval = 0
             fastestInterval = 0
@@ -442,7 +440,7 @@ class InitializeClass(context: Context) {
 
 
         fusedLocationClient.requestLocationUpdates(
-            locationRequest,mLocationCallback, Looper.myLooper()
+            locationRequest, mLocationCallback, Looper.myLooper()
         )
     }
 
@@ -477,7 +475,9 @@ class InitializeClass(context: Context) {
             return true
         }
         return false
-    }
+
+}
+
 
     private fun requestPermissions(activity: Activity) {
         ActivityCompat.requestPermissions(
@@ -490,12 +490,11 @@ class InitializeClass(context: Context) {
         )
     }
 
-
-
     fun cancelAlarm(activity: Activity) {
-        val intent = Intent(activity, NotificationReceiver::class.java)
-        pendingIntent = PendingIntent.getBroadcast(activity, 0, intent, 0)
-        val intent1 = Intent(activity, NotificationReceiver::class.java)
+        val intent = Intent(activity, MorningReceiver::class.java)
+        pendingIntent = PendingIntent.getBroadcast(activity, 1, intent, 0)
+        alarmManager.cancel(pendingIntent)
+        val intent1 = Intent(activity, NightReceiver::class.java)
         pendingIntent = PendingIntent.getBroadcast(activity, 1, intent1, 0)
         alarmManager.cancel(pendingIntent)
         Snackbar.make(

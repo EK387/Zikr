@@ -9,7 +9,7 @@
             android:title="Jutarnji zikr"/>
         <item android:id="@+id/nam_moon"
 
-            android:icon ="@drawable/ic_mjesec"
+            android:icon ="@drawable/ic_moon"
             android:title="Večernji zikr"/>
 
 
@@ -20,14 +20,16 @@
 
             <item android:id="@+id/name_share"
                 android:icon ="@drawable/ic_share"
-                android:title="Share"/>
+                android:title="Podijeli"/>
             <item
                 android:id="@+id/myswitch"
                 android:title="Notifikacije"
-                android:icon ="@drawable/ic_settings"
+                android:icon ="@drawable/ic_notification"
                 app:actionViewClass="android.widget.Switch"
                 app:showAsAction="always" />
-
+            <item android:id="@+id/about"
+                android:icon ="@drawable/ic_about"
+                android:title="O aplikaciji"/>
         </menu>
 
     </item>

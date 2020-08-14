@@ -1,29 +1,21 @@
-package com.example.zikr
+package com.jutarnji.zikr
 
 import android.app.Dialog
 import android.content.Context
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.Handler
 import android.os.Vibrator
-import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Switch
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_jutarnji.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_layout.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 import java.util.*
 import java.util.Calendar.DAY_OF_WEEK
-import java.util.Calendar.SUNDAY
 
 
 class Jutarnji : AppCompatActivity() {
@@ -40,11 +32,14 @@ class Jutarnji : AppCompatActivity() {
     var Counter18 = 10
     var Counter19 = 10
 
-
-    private lateinit var j: InitializeClass
-    lateinit var myDialog: Dialog
     lateinit var sharedPref: SharedPref
+    lateinit var j: InitializeClass
+    lateinit var myDialog: Dialog
     lateinit var zikrovi: Zikrovi
+    private var pause: Boolean = false
+    private var mp: MediaPlayer? = null
+    lateinit var mp1: MediaPlayer
+    lateinit var mp2: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,14 +50,16 @@ class Jutarnji : AppCompatActivity() {
         j = InitializeClass(this)
 
 
-        CoroutineScope(Dispatchers.Main).launch {
-            j.getApi(this@Jutarnji)
-            j.location(this@Jutarnji)
-            j.getApiUpdate(this@Jutarnji)
+    if(sharedPref.loadSwitchState()){
+      CoroutineScope(Dispatchers.Main).launch {
+          j.location(this@Jutarnji)
+          j.getApi(this@Jutarnji)
+          j.getApiUpdate(this@Jutarnji)
 
+      }
 
+  }
 
-        }
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
@@ -74,11 +71,7 @@ class Jutarnji : AppCompatActivity() {
         playDhikr()
         hideArTrBS()
 
-
-
     }
-
-
 
     private fun hideArTrBS() {
         BTNarapski.setOnClickListener {
@@ -97,10 +90,8 @@ class Jutarnji : AppCompatActivity() {
     }
 
 
-
     fun showHideArabian() {
         if (txtAr1.visibility == View.GONE) {
-
             txtAr1.visibility = View.VISIBLE
             txtAr2.visibility = View.VISIBLE
             txtAr3.visibility = View.VISIBLE
@@ -108,7 +99,6 @@ class Jutarnji : AppCompatActivity() {
             txtAr5.visibility = View.VISIBLE
             txtAr6.visibility = View.VISIBLE
             txtAr7.visibility = View.VISIBLE
-
             txtAr9.visibility = View.VISIBLE
             txtAr10.visibility = View.VISIBLE
             txtAr11.visibility = View.VISIBLE
@@ -171,7 +161,6 @@ class Jutarnji : AppCompatActivity() {
             txtBs5.visibility = View.VISIBLE
             txtBs6.visibility = View.VISIBLE
             txtBs7.visibility = View.VISIBLE
-
             txtBs9.visibility = View.VISIBLE
             txtBs10.visibility = View.VISIBLE
             txtBs11.visibility = View.VISIBLE
@@ -220,7 +209,7 @@ class Jutarnji : AppCompatActivity() {
     }
 
     fun showHideTranskription() {
-        if (txtTr1.visibility == View.GONE ) {
+        if (txtTr1.visibility == View.GONE) {
             txtTr1.visibility = View.VISIBLE
             txtTr1.visibility = View.VISIBLE
             txtTr2.visibility = View.VISIBLE
@@ -229,7 +218,6 @@ class Jutarnji : AppCompatActivity() {
             txtTr5.visibility = View.VISIBLE
             txtTr6.visibility = View.VISIBLE
             txtTr7.visibility = View.VISIBLE
-
             txtTr9.visibility = View.VISIBLE
             txtTr10.visibility = View.VISIBLE
             txtTr11.visibility = View.VISIBLE
@@ -291,7 +279,7 @@ class Jutarnji : AppCompatActivity() {
             txtAr1.visibility = View.VISIBLE
 
             showHideArabian()
-            BTNarapski.isChecked = true
+            BTNarapski.isChecked = false
         } else {
             txtAr1.visibility = View.GONE
             showHideArabian()
@@ -301,7 +289,7 @@ class Jutarnji : AppCompatActivity() {
         if (sharedPref.loadBosnianState()) {
             txtBs1.visibility = View.VISIBLE
             showHideBosnian()
-            BTNbos.isChecked =true
+            BTNbos.isChecked = false
         } else {
             txtBs1.visibility = View.GONE
             showHideBosnian()
@@ -312,7 +300,7 @@ class Jutarnji : AppCompatActivity() {
             txtTr1.visibility = View.VISIBLE
             showHideTranskription()
 
-            BTNtrans.isChecked = true
+            BTNtrans.isChecked = false
         } else {
             txtTr1.visibility = View.GONE
             showHideTranskription()
@@ -331,8 +319,7 @@ class Jutarnji : AppCompatActivity() {
 
 
         if (dayOfWeek == 6)
-            if (!isDialogShown1)
-           {
+            if (!isDialogShown1) {
                 showDialog()
                 sharedPref.saveDialog1(true)
 
@@ -358,197 +345,259 @@ class Jutarnji : AppCompatActivity() {
 //            }
 
     }
+    fun stopPlayer(){
+        if(mp1.isPlaying)
+            mp1.stop()
+
+        (mp2.isPlaying)
+        mp2.stop()
+
+    }
 
     fun playDhikr() {
-        val mp1 = MediaPlayer.create(this, R.raw.asbahna_ve_asbehal)
-        btn_audio1.setOnClickListener {
 
-            if (mp1.isPlaying())
-                mp1.pause()
-            else
+        mp1 = MediaPlayer.create(this@Jutarnji, R.raw.asbahna_ve_asbehal)
+        btnaudio1.setOnClickListener {
+            stopPlayer()
+
+            if(!mp1.isPlaying) {
                 mp1.start()
+                btnaudio1.setBackgroundResource(R.drawable.zvuk_enabled)
+            }else if(mp1.isPlaying){
+                mp1.pause()
+                btnaudio1.setBackgroundResource(R.drawable.pause_disabled)
+            }
 
         }
 
-        val mp2 = MediaPlayer.create(this, R.raw.asbahna_ala_fitreti)
-        btn_audio2.setOnClickListener {
+        mp2 = MediaPlayer.create(this, R.raw.asbahna_ala_fitreti)
+        btnaudio2.setOnClickListener {
+          stopPlayer()
 
-            if (mp2.isPlaying())
-                mp2.pause()
-            else
+            if (!mp2.isPlaying) {
                 mp2.start()
+                btnaudio1.setBackgroundResource(R.drawable.zvuk_enabled)
+            }else if (mp2.isPlaying){
+                mp2.pause()
+                btnaudio2.setBackgroundResource(R.drawable.pause_disabled)
+             }
 
-        }
-
-        val mp3 = MediaPlayer.create(this, R.raw.allahume_alimel_gajbi)
-        btn_audio3.setOnClickListener {
-
-            if (mp3.isPlaying())
-                mp3.pause()
-            else
-                mp3.start()
-
-        }
-
-        val mp4 = MediaPlayer.create(this, R.raw.allahume_ini_esseluke)
-        btn_audio4.setOnClickListener {
-
-            if (mp4.isPlaying())
-                mp4.pause()
-            else
-                mp4.start()
-
-        }
-
-        val mp5 = MediaPlayer.create(this, R.raw.allahume_bike_asbahna)
-        btn_audio5.setOnClickListener {
-
-            if (mp5.isPlaying())
-                mp5.pause()
-            else
-                mp5.start()
-
-        }
-
-        val mp6 = MediaPlayer.create(this, R.raw.ja_hajju)
-        btn_audio6.setOnClickListener {
-
-            if (mp6.isPlaying())
-                mp6.pause()
-            else
-                mp6.start()
-
-        }
-
-        val mp7 = MediaPlayer.create(this, R.raw.allahume_ente_rabi)
-        btn_audio7.setOnClickListener {
-
-            if (mp7.isPlaying())
-                mp7.pause()
-            else
-                mp7.start()
-
-        }
-
-        val mp8 = MediaPlayer.create(this, R.raw.hasbijallahu)
-        btn_audio8.setOnClickListener {
-
-            if (mp8.isPlaying())
-                mp8.pause()
-            else
-                mp8.start()
-
-        }
-
-        val mp9 = MediaPlayer.create(this, R.raw.bismilahilezi_lajeduru)
-        btn_audio9.setOnClickListener {
-
-            if (mp9.isPlaying())
-                mp9.pause()
-            else
-                mp9.start()
 
         }
 
 
-
-        val mp11 = MediaPlayer.create(this, R.raw.reditu_billahi)
-        btn_audio11.setOnClickListener {
-
-            if (mp11.isPlaying())
-                mp11.pause()
-            else
-                mp11.start()
-
-        }
-
-        val mp12 = MediaPlayer.create(this, R.raw.adede_halkih)
-        btn_audio12.setOnClickListener {
-
-            if (mp12.isPlaying())
-                mp12.pause()
-            else
-                mp12.start()
+        btnaudio3.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.allahume_alimel_gajbi)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio3.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
 
         }
 
-        val mp13 = MediaPlayer.create(this, R.raw.subhanallahi_vebihamdih)
-        btn_audio13.setOnClickListener {
 
-            if (mp13.isPlaying())
-                mp13.pause()
-            else
-                mp13.start()
-
-        }
-
-        val mp14 = MediaPlayer.create(this, R.raw.kursija)
-        btn_audio14.setOnClickListener {
-
-            if (mp14.isPlaying())
-                mp14.pause()
-            else
-                mp14.start()
+        btnaudio4.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.allahume_ini_esseluke)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio4.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
 
         }
 
-        val mp15 = MediaPlayer.create(this, R.raw.ihlas)
-        btn_audio15.setOnClickListener {
-
-            if (mp15.isPlaying())
-                mp15.pause()
-            else
-                mp15.start()
-
-        }
-
-        val mp16 = MediaPlayer.create(this, R.raw.felek)
-        btn_audio16.setOnClickListener {
-
-            if (mp16.isPlaying())
-                mp16.pause()
-            else
-                mp16.start()
+        btnaudio5.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.allahume_bike_asbahna)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio5.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
 
         }
 
-        val mp17 = MediaPlayer.create(this, R.raw.nas)
-        btn_audio17.setOnClickListener {
 
-            if (mp17.isPlaying())
-                mp17.pause()
-            else
-                mp17.start()
-
-        }
-        val mp18 = MediaPlayer.create(this, R.raw.laillahe_vahdehu)
-        btn_audio18.setOnClickListener {
-
-            if (mp18.isPlaying())
-                mp18.pause()
-            else
-                mp18.start()
+        btnaudio6.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.ja_hajju)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio6.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
 
         }
-        val mp19 = MediaPlayer.create(this, R.raw.alahume_salli_alla_muhammed)
-        btn_audio19.setOnClickListener {
 
-            if (mp19.isPlaying())
-                mp19.pause()
-            else
-                mp19.start()
+
+        btnaudio7.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.allahume_ente_rabi)
+
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio7.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
 
         }
-        val mp19_1 = MediaPlayer.create(this, R.raw.salavat1)
-        btn_audio19_1.setOnClickListener {
 
-            if (mp19_1.isPlaying())
-                mp19_1.pause()
-            else
-                mp19_1.start()
 
+        btnaudio8.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.hasbijallahu)
+
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio8.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+
+        }
+
+
+        btnaudio9.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.bismilahilezi_lajeduru)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio9.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+
+
+        btnaudio11.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.reditu_billahi)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio11.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+
+        btnaudio12.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.adede_halkih)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio12.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+
+        btnaudio13.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.subhanallahi_vebihamdih)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio13.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+        btnaudio14.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.kursija)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio14.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+        btnaudio15.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.ihlas)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio15.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+
+        btnaudio16.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.felek)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio16.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+
+        btnaudio17.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.nas)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio17.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+
+        btnaudio18.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.laillahe_vahdehu)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio18.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+
+        btnaudio19.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.alahume_salli_alla_muhammed)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio19.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+
+        btnaudio19_1.setOnClickListener {
+            stopPlaying()
+            mp = MediaPlayer.create(this, R.raw.salavat1)
+            if (mp!!.isPlaying) {
+                mp!!.pause()
+            } else {
+                mp!!.start()
+                btnaudio19_1.setBackgroundResource(R.drawable.zvuk_enabled)
+            }
+        }
+
+
+    }
+
+    fun stopPlaying() {
+        if (mp != null) {
+            mp!!.stop()
+            mp!!.release()
+            mp = null
         }
     }
+
+
+
 
     fun clickLayout1(view: View) {
         var Counter = 1
@@ -566,7 +615,7 @@ class Jutarnji : AppCompatActivity() {
             layout1.setBackgroundColor(getResources().getColor(R.color.layout))
 
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
+            vibratorService.vibrate(80)
 
         }
 
@@ -588,12 +637,12 @@ class Jutarnji : AppCompatActivity() {
         if (Counter1 == 0) {
             layout2.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
-
+            vibratorService.vibrate(80)
 
         }
 
     }
+
     fun clickLayout3(view: View) {
 
         var Counter3 = 1
@@ -609,12 +658,12 @@ class Jutarnji : AppCompatActivity() {
         if (Counter3 == 0) {
             layout3.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
-
+            vibratorService.vibrate(80)
 
         }
 
     }
+
     fun clickLayout4(view: View) {
 
         var Counter4 = 1
@@ -630,11 +679,11 @@ class Jutarnji : AppCompatActivity() {
         if (Counter4 == 0) {
             layout4.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
-
+            vibratorService.vibrate(80)
         }
 
     }
+
     fun clickLayout5(view: View) {
 
         var Counter5 = 1
@@ -650,12 +699,12 @@ class Jutarnji : AppCompatActivity() {
         if (Counter5 == 0) {
             layout5.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
-
+            vibratorService.vibrate(80)
 
         }
 
     }
+
     fun clickLayout6(view: View) {
 
         var Counter6 = 1
@@ -671,11 +720,11 @@ class Jutarnji : AppCompatActivity() {
         if (Counter6 == 0) {
             layout6.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
-
+            vibratorService.vibrate(80)
         }
 
     }
+
     fun clickLayout7(view: View) {
 
         var Counter7 = 1
@@ -691,14 +740,13 @@ class Jutarnji : AppCompatActivity() {
         if (Counter7 == 0) {
             layout7.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
-
+            vibratorService.vibrate(80)
 
         }
 
     }
-    fun clickLayout8(view: View) {
 
+    fun clickLayout8(view: View) {
 
 
         if (Counter8 == 0) {
@@ -708,21 +756,20 @@ class Jutarnji : AppCompatActivity() {
             Counter8--
             btn_brojac8.setText("$Counter8")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
-
+            vibratorService.vibrate(80)
         }
 
         if (Counter8 == 0) {
             layout8.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
 
     }
-    fun clickLayout9(view: View) {
 
+    fun clickLayout9(view: View) {
 
 
         if (Counter9 == 0) {
@@ -732,13 +779,13 @@ class Jutarnji : AppCompatActivity() {
             Counter9--
             btn_brojac9.setText("$Counter9")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
+            vibratorService.vibrate(80)
         }
 
         if (Counter9 == 0) {
             layout9.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
@@ -755,20 +802,20 @@ class Jutarnji : AppCompatActivity() {
             Counter11--
             btn_brojac11.setText("$Counter11")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
+            vibratorService.vibrate(80)
         }
 
         if (Counter11 == 0) {
             layout11.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
 
     }
-    fun clickLayout12(view: View) {
 
+    fun clickLayout12(view: View) {
 
 
         if (Counter12 == 0) {
@@ -778,20 +825,20 @@ class Jutarnji : AppCompatActivity() {
             Counter12--
             btn_brojac12.setText("$Counter12")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
+            vibratorService.vibrate(80)
         }
 
         if (Counter12 == 0) {
             layout12.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
 
     }
-    fun clickLayout13(view: View) {
 
+    fun clickLayout13(view: View) {
 
 
         if (Counter13 == 0) {
@@ -801,20 +848,20 @@ class Jutarnji : AppCompatActivity() {
             Counter13--
             btn_brojac13.setText("$Counter13")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
+            vibratorService.vibrate(80)
         }
 
         if (Counter13 == 0) {
             layout13.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
 
     }
-    fun clickLayout14(view: View) {
 
+    fun clickLayout14(view: View) {
 
 
         if (Counter14 == 0) {
@@ -828,14 +875,13 @@ class Jutarnji : AppCompatActivity() {
         if (Counter14 == 0) {
             layout14.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
-
+            vibratorService.vibrate(80)
 
         }
 
     }
-    fun clickLayout15(view: View) {
 
+    fun clickLayout15(view: View) {
 
 
         if (Counter15 == 0) {
@@ -845,20 +891,20 @@ class Jutarnji : AppCompatActivity() {
             Counter15--
             btn_brojac15.setText("$Counter15")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
+            vibratorService.vibrate(80)
         }
 
         if (Counter15 == 0) {
             layout15.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
 
     }
-    fun clickLayout16(view: View) {
 
+    fun clickLayout16(view: View) {
 
 
         if (Counter16 == 0) {
@@ -868,13 +914,13 @@ class Jutarnji : AppCompatActivity() {
             Counter16--
             btn_brojac16.setText("$Counter16")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
+            vibratorService.vibrate(80)
         }
 
         if (Counter16 == 0) {
             layout16.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
@@ -884,7 +930,6 @@ class Jutarnji : AppCompatActivity() {
     fun clickLayout17(view: View) {
 
 
-
         if (Counter17 == 0) {
             btn_brojac17.setText("$Counter17")
 
@@ -892,18 +937,19 @@ class Jutarnji : AppCompatActivity() {
             Counter17--
             btn_brojac17.setText("$Counter17")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
+            vibratorService.vibrate(80)
         }
 
         if (Counter17 == 0) {
             layout17.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
 
     }
+
     fun clickLayout18(view: View) {
 
         if (Counter18 == 0) {
@@ -913,13 +959,13 @@ class Jutarnji : AppCompatActivity() {
             Counter18--
             btn_brojac18.setText("$Counter18")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
+            vibratorService.vibrate(80)
         }
 
         if (Counter18 == 0) {
             layout18.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
@@ -928,30 +974,33 @@ class Jutarnji : AppCompatActivity() {
 
     fun clickLayout19(view: View) {
 
-        if (Counter19 == 0)
-          {
+        if (Counter19 == 0) {
             btn_brojac19.setText("$Counter19")
-              btn_brojac19_1.setText("$Counter19")
+            btn_brojac19_1.setText("$Counter19")
 
         } else {
             Counter19--
             btn_brojac19.setText("$Counter19")
             btn_brojac19_1.setText("$Counter19")
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(40)
-
+            vibratorService.vibrate(80)
         }
 
         if (Counter19 == 0) {
             layout19.setBackgroundColor(getResources().getColor(R.color.layout))
             val vibratorService = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-            vibratorService.vibrate(250)
+            vibratorService.vibrate(200)
 
 
         }
 
 
+    }
 
+    override fun onPause() {
+        super.onPause()
+        mp?.stop()
     }
 
 }
+

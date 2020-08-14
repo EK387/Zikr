@@ -1,3 +1,4 @@
+
 <resources>
 
     <!-- Base application theme. -->
@@ -18,6 +19,8 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
 
     </style>
+
+
 
 <!--    <style name="mySwitch" parent="Theme.AppCompat.Light">-->
 <!--        &lt;!&ndash; active thumb & track color (30% transparency) &ndash;&gt;-->

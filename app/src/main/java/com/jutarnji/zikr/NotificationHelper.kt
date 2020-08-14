@@ -1,4 +1,4 @@
-package com.example.zikr
+package com.jutarnji.zikr
 
 import android.annotation.TargetApi
 import android.app.NotificationChannel
@@ -12,9 +12,6 @@ import android.os.Build
 
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 import java.util.*
 
 
@@ -62,12 +59,12 @@ class NotificationHelper(base: Context?) : ContextWrapper(base) {
         get() = NotificationCompat.Builder(applicationContext, channelID)
             .setContentTitle(getString(R.string.app_name))
             .setAutoCancel(true)
-            .setColor(ContextCompat.getColor(this, R.color.bosanski))
+            .setColor(ContextCompat.getColor(this, R.color.hadisi))
             .setLights(Color.YELLOW, 3000, 3000)
             .setVibrate(longArrayOf(100, 500, 100))
             .setContentText("$zikr")
             .setContentIntent(contentIntent)
-            .setSmallIcon(R.drawable.logo1)
+            .setSmallIcon(R.drawable.ic_logo_white)
 
 
     companion object {

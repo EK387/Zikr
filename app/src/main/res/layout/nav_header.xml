@@ -13,20 +13,22 @@
         android:id="@+id/logo"
         android:layout_width="84dp"
         android:layout_height="84dp"
+        android:alpha="0.4"
         android:layout_marginStart="5dp"
         android:background="@drawable/logo"
 
-        />
+        android:layout_marginLeft="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-android:layout_marginStart="5dp"
+        android:layout_marginStart="5dp"
         android:textColor="@color/colorOFF"
-        android:textSize="13dp"
+        android:textSize="16dp"
 
 
-        android:text="Vjerodostojni jutarnji i večernji zikrovi">
+        android:text="Jutarnji i večernji zikr"
+        android:layout_marginLeft="5dp">
 
     </TextView>
 
